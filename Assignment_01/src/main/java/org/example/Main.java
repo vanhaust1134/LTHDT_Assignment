@@ -66,7 +66,7 @@ public class Main {
             sumArea += circles[i].area();
         }
 
-        //In tổng diện tích và chu vi
+        //In tổng diện tích
         System.out.println("\n************************");
         System.out.println("Bai 3: Class Circle");
         System.out.println("**************************");
