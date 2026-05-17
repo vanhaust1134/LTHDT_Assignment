@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Locale;
+
 public class BankAccount {
     private int accountNumber;
     private String accountHolderName;
@@ -45,7 +47,7 @@ public class BankAccount {
 
     //Khai báo phương thức hiển thị thông tin
     public void printInfo(){
-        System.out.println("STK: " + accountNumber + "\n" + "Tên chủ TK: " + accountHolderName + "\n" + "Balance: " + String.format("%,.3f%n", balance) );
+        System.out.println("STK: " + accountNumber + "\n" + "Tên chủ TK: " + accountHolderName + "\n" + "Balance: " + String.format("%,.0f%n", balance) );
     }
 
     //Khai báo phương thức nạp tiền
@@ -94,6 +96,6 @@ public class BankAccount {
         this.balance -= amount;      // Giảm số dư tài khoản gửi
         other.balance += amount;     // Tăng số dư tài khoản nhận
 
-        System.out.println("Chuyển khoản thành công " + amount + " đến tài khoản " + other.getAccountNumber());
+        System.out.println("Chuyển khoản thành công " + String.format("%,.0f%n", amount) + " đến tài khoản " + other.getAccountNumber());
     }
 }

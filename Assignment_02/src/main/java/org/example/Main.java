@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.model.Category;
+import org.example.model.Product;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -94,5 +97,90 @@ public class Main {
         //Phần mở rộng: Thực hiện chuyển tiền và hiển thị số dư
         ba2.transfer(ba1,700000);
         ba2.printInfo();
+
+        //Bài 4: Class Employee
+        //1. Khởi tạo giá trị
+        Employee e1 = new Employee("Tran Van A",3000000);
+        Employee e2 = new Employee("Nguyen Van B",4000000);
+        Employee e3 = new Employee("Nguyen Van C",5000000);
+
+        //In giá trị
+        System.out.println("\n************************");
+        System.out.println("Bai 4: Class Employee");
+        System.out.println("**************************");
+        e1.printInfo();
+        System.out.println("-------------------");
+        e2.printInfo();
+        System.out.println("-------------------");
+        e3.printInfo();
+        System.out.println("-------------------");
+        //Tổng số nhân viên
+        System.out.println("Tổng số nhân viên: " + Employee.getEmployeeCount());
+        System.out.println("-------------------");
+        //Tổng lương
+        System.out.println("Tổng lương: " + Employee.getTotalSalary());
+        System.out.println("-------------------");
+        //Lương trung bình
+        System.out.println("Lương trung bình: " + Employee.getAverageCount());
+        System.out.println("-------------------");
+
+
+        System.out.println("Cập nhật tên công ty, bonus lương và cập nhật lương nhân viên");
+        //Thay đổi lương 1 nhân viên
+        e2.setSalary(10000000);
+        //Phần mở rộng: Đổi tên công ty
+        Employee.changeCompanyName("Tesla");
+        e3.printInfo();
+        //Phần mở rộng: thêm bonus vào lương
+        e1.raiseSalary(10);
+        //Tổng lương sau khi thay đổi lương 1 nhân viên
+        System.out.println("Tổng lương: " + Employee.getTotalSalary());
+        System.out.println("-------------------");
+        //Lương trung bình sau khi thay đổi lương 1 nhân viên
+        System.out.println("Lương trung bình: " + Employee.getAverageCount());
+        System.out.println("-------------------");
+
+        //Bài 5: Class Product + Package
+        //1. Khởi tạo giá trị
+        Product p1 = new Product(); // Unknown
+        Product p2 = new Product("Dien thoai iPhone", 20000000); // 2 tham số
+        Product p3 = new Product("Laptop Asus", 15000000, 10); // 3 tham số
+        Product p4 = new Product("Sach Lap Trinh Java", 150000, 50); // 3 tham số
+
+        // Tạo danh mục sản phẩm (Phần mở rộng)
+        Category electronics = new Category("CAT01", "Dien tu");
+        Category books = new Category("CAT02", "Sach");
+
+        // Gán danh mục cho sản phẩm
+        p2.setCategory(electronics);
+        p3.setCategory(electronics);
+        p4.setCategory(books);
+
+        System.out.println("Thong tin san pham ban dau");
+        p1.displayInfo();
+        p2.displayInfo();
+        p3.displayInfo();
+        p4.displayInfo();
+
+        System.out.println("\nHoat dong kho va ban hang");
+        p2.restock(5); // Nhập thêm 5 điện thoại
+        p2.sell(2);    // Bán 2 điện thoại -> Doanh thu: 40,000,000
+        p3.sell(3);    // Bán 3 laptop -> Doanh thu: 45,000,000
+        p4.sell(10);   // Bán 10 cuốn sách -> Doanh thu: 1,500,000
+
+        System.out.println("\n" + Product.getStoreReport());
+
+        System.out.println("\nAp dung khuyen mai toan bo mat hang (Giam gia 10% dong loat)");
+        Product[] storeProducts = {p2, p3, p4};
+        Product.applyGlobalPromotion(storeProducts, 10);
+        p2.displayInfo();
+        p3.displayInfo();
+
+        System.out.println("\nThu nghiem tinh nang dung ban (Discontinue)");
+        p4.discontinue();
+        p4.displayInfo();
+        p4.sell(5); // Bán hàng sau khi hủy kinh doanh
+
+        System.out.println("\nTong so san pham con lai sau khi xoa/huy: " + Product.getTotalProducts());
     }
 }
